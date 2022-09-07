@@ -1,7 +1,8 @@
 from django.contrib.admin.sites import AdminSite
 from django.conf import settings
 from functools import update_wrapper
-from django.utils import six
+import six
+
 
 class ModifyAdminsite(AdminSite):
     
@@ -21,8 +22,8 @@ class ModifyAdminsite(AdminSite):
         # and django.contrib.contenttypes.views imports ContentType.
         from django.contrib.contenttypes import views as contenttype_views
 
-        if settings.DEBUG:
-            self.check_dependencies()
+        # if settings.DEBUG:
+        #     self.check_dependencies()
 
         def wrap(view, cacheable=False):
             def wrapper(*args, **kwargs):

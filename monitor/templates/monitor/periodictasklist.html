@@ -82,7 +82,7 @@
 				  {%endif%}
 				  </td>
 					<td data-editable="false" class="text-center">
-					<a class="btn btn-xs btn-success" onclick="run_task('{{element.name}}','{{element.id}}');">{%trans 'run' %}</a>
+
 					<a class="btn btn-xs btn-primary" href="{% url 'periodictask_detail' element.id %}">{%trans 'detail' %}</a>
 					<a class="btn btn-xs btn-info" href="{% url 'periodictask_update' element.id %}">{%trans 'edit' %}</a>					
 				   <a class="btn btn-xs btn-danger" href="{% url 'periodictask_delete' element.id %}">{%trans 'delete' %}</a>

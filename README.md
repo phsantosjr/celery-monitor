@@ -1,9 +1,21 @@
-# celery monitor
+# Django - Celery Monitor
+![](https://img.shields.io/badge/Python-3.9.13-blue.svg)
+![](https://img.shields.io/badge/Django-3.2.15-blue.svg)
 
-Celery task monitoring and management application. This project aims to replace the celery monitor tools flower.Celery monitor aims to integrate django and celery monitor.
-### [celery configuration reference for django](http://docs.celeryproject.org/en/3.1/django/index.html)
-### [Deployment tutorial guide for celery](./doc/Deploymentguide.md)
-# screenshot
-![worker index](./doc/images/index.jpg  "worker index")
-![worker monitor chart](./doc/images/taskstatehistory.png  "task state history log")
-![worker monitor chart](./doc/images/chart.png  "task state log monitor chart")
+Celery task monitoring and management application. 
+
+### How to run
+
+- clone this repo `git clone repo`
+- create your virtual environment
+- copy `.env_sample` to `.env`
+- run app `python manage.py runserver`
+
+
+### Static Files
+
+Project is configured to server static files in third party cloud storage
+
+You can use:
+- Spaces, from Digital Ocean
+- S3, from AWS

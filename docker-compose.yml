@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  celery-monitor:
+    image: lojaconectada/celery-monitor
+    env_file: .env
+    command: /opt/app/celery-monitor/run_server.sh
+    volumes:
+      - /etc/localtime/:/etc/localtime
+    expose:
+      - "8905"
+    networks:
+      - lojaconectada-frontend
+
+networks:
+  lojaconectada-frontend:
+    external:
+      name: lojaconectada-frontend

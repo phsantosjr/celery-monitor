@@ -10,7 +10,7 @@
 
     {% block extrastyle %}{% endblock %}
 
-    {% load staticfiles %} 
+    {% load static %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
@@ -198,7 +198,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{% url "loginout"%}" class="btn btn-default btn-flat">{%trans 'logout' %}</a>
+                  <a href="{% url "logout"%}" class="btn btn-default btn-flat">{%trans 'logout' %}</a>
                 </div>
               </li>
             </ul>
@@ -228,7 +228,9 @@
             <li class="active"><a href="{% url "reserved_tasks_index" %}"><i class="fa fa-ban"></i> {%trans 'Reserved Tasks' %}</a></li>
             <li class="active"><a href="{% url "active_tasks_index" %}"><i class="fa fa-tasks"></i> {%trans 'Active Tasks' %}</a></li>
             <li class="active"><a href="{% url "registered_tasks_index" %}"><i class="fa fa-registered"></i> {%trans 'Registered Tasks' %}</a></li>
+            <!--
             <li class="active"><a href="{% url "periodictask_list" %}"><i class="fa fa-history"></i>{%trans 'Job list'%}</a></li>
+            -->
             <li class="active"><a href="/monitor/taskstate/"><i class="fa fa-user-secret"></i>{%trans 'Task monitor'%}</a></li>
             <li class="active"><a href="{% url "task_state_chart" %}"><i class="fa fa-pie-chart"></i>{%trans 'Task sate chart'%}</a></li>
           </ul>

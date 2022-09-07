@@ -1,10 +1,10 @@
 from django.contrib import admin
 # Register your models here.
-from djcelery.models import IntervalSchedule, CrontabSchedule
+# from djcelery.models import IntervalSchedule, CrontabSchedule
 from .models import ActionLog
 
-admin.site.unregister(IntervalSchedule)
-admin.site.unregister(CrontabSchedule)
+# admin.site.unregister(IntervalSchedule)
+# admin.site.unregister(CrontabSchedule)
 
 
 class custom_interval_admin(admin.ModelAdmin):
@@ -37,5 +37,5 @@ class ActionLogAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ActionLog, ActionLogAdmin)
-admin.site.register(IntervalSchedule, custom_interval_admin)
-admin.site.register(CrontabSchedule, custom_crontab_admin)
+# admin.site.register(IntervalSchedule, custom_interval_admin)
+# admin.site.register(CrontabSchedule, custom_crontab_admin)
