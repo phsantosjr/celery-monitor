@@ -72,13 +72,15 @@ class CeleryClient(Singleton):
 
     def worker_statuses(self):
         """
-		get worker statuses
-		:return:
-		"""
+        get worker statuses
+        :return:
+        """
+
         response = self._inspect.ping()
         if not response:
             return []
         workers = {}
+
         for k, v in response.items():
             for k_inner, v_inner in v.items():
                 if k_inner == "ok" and v_inner == "pong":

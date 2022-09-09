@@ -86,14 +86,17 @@ class reserved_tasks(LoginRequiredMixin,View):
     def post(self,request):
         pass
 
+
 class active_queues(LoginRequiredMixin,View):
-    def get(self,request):
+    def get(self, request):
         instance = CeleryClient()
         response = instance.active_queues()
+
         if not response:
-            return HttpResponse(json.dumps([]),content_type="application/json")
+            return HttpResponse(json.dumps([]), content_type="application/json")
         else:
-            return HttpResponse(json.dumps(response),content_type="application/json")
+            return HttpResponse(json.dumps(response), content_type="application/json")
+
     def post(self,request):
         pass
 
