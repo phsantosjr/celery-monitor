@@ -68,7 +68,7 @@ WSGI_APPLICATION = 'celerymonitor.wsgi.application'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 # Database
 
@@ -143,8 +143,8 @@ djano celery to accomplish some async job configuration.
 """
 # djcelery.setup_loader()
 
-REDIS_ENDPOINT = f'redis://:{config("REDIS_PASSWORD")}@{config("BROKER_URL")}'
-BROKER_URL = REDIS_ENDPOINT
+BROKER_URL = f'redis://:{config("REDIS_PASSWORD")}@{config("BROKER_URL")}'
+REDIS_ENDPOINT = f'redis://:{config("REDIS_ENDPOINT")}'
 broker_url = BROKER_URL
 CELERY_RESULT_BACKEND = REDIS_ENDPOINT
 CELERY_ACCEPT_CONTENT = ['application/json']  
@@ -245,6 +245,18 @@ LOGGING = {
             'django.db.backends': {
                 'handlers': ['console'],
                 'level': 'DEBUG',
+            },
+        },
+    }
+
+CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_ENDPOINT,
+            "OPTIONS": {
+                "PICKLE_VERSION": 2,
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "CONNECTION_POOL_KWARGS": {"max_connections": 100},
             },
         },
     }

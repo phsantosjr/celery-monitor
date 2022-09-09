@@ -22,7 +22,7 @@ def debug_task(self):
         # Read stdout from subprocess until the buffer is empty !
         for line in iter(p.stdout.readline, b''):
             if line:  # Don't print blank lines
-                print 'stdout', line
+                print('stdout', line)
                 # yield line
         # This ensures the process has completed, AND sets the 'returncode' attr
         while p.poll() is None:
@@ -32,7 +32,7 @@ def debug_task(self):
         if p.returncode != 0:
             # The run_command() function is responsible for logging STDERR
             print("Error traceback: " + str(err))
-    print runs_command('ping -c 10 baidu.com')
+    print(runs_command('ping -c 10 baidu.com'))
     """https://stackoverflow.com/questions/89228/calling-an-external-command-in-python"""
     """https://stackoverflow.com/questions/4624416/is-there-a-possibility-to-execute-a-python-script-while-being-in-interactive-mod"""
 

@@ -25,7 +25,7 @@ urlpatterns = [
     path("admin", admin.site.urls),
     path("accounts/login/", CustomLoginView.as_view(), name="login"),
     path("accounts/logout/", logout, name="logout"),
-    path(r"monitor/", include("monitor.urls")),
+    path("monitor/", include("monitor.urls")),
     path("", WorkersIndexView.as_view()),
     path("api-auth", include("rest_framework.urls", namespace="rest_framework")),
     path("api-token-auth/", obtain_auth_token),
