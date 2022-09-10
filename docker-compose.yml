@@ -1,25 +1,43 @@
-version: '3'
-
 services:
+  postgres:
+    container_name: django_celery_monitor_postgres
+    image: postgres:latest
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - LC_ALL=C.UTF-8
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    expose:
+      - 5434
+    networks:
+      - lojaconectada-frontend
+
   redis:
-    image: "redis:alpine"
-    container_name: "redis"
+    container_name: django_celery_monitor_redis
+    image: redis:alpine
     command: redis-server
     expose:
-      - "6379"
+      - 6379
+    networks:
+      - lojaconectada-frontend
 
   celery-monitor:
+    container_name: django_celery_monitor
     image: lojaconectada/celery-monitor
     env_file: .env
     command: /opt/app/celery-monitor/run_server.sh
     volumes:
       - /etc/localtime/:/etc/localtime
     expose:
-      - "8905"
+      - 8905
     networks:
       - lojaconectada-frontend
     depends_on:
-      - "redis"
+      - postgres
+      - redis
 
 networks:
   lojaconectada-frontend:
