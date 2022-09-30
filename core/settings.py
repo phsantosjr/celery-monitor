@@ -45,7 +45,9 @@ EXTRA_APPS = [
     # 'rest_framework',
 ]
 
-PROJECT_APPS = []
+PROJECT_APPS = [
+    'monitor',
+]
 
 DEV_APPS = []
 
